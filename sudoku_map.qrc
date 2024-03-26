@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../../sudoku_map.png</file>
+        <file>../../sudoku_icon.png</file>
+    </qresource>
+</RCC>
