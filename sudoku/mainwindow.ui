@@ -44,6 +44,11 @@
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralwidget {
+	background-color:rgb(248, 255, 253)
+}</string>
+   </property>
    <widget class="QLabel" name="sudoku_base">
     <property name="geometry">
      <rect>
@@ -78,15 +83,29 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	/*background-color:rgb(255, 236, 233)
+}</string>
+    </property>
     <property name="text">
      <string>开始</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="quitBtn">
     <property name="geometry">
      <rect>
       <x>1060</x>
-      <y>540</y>
+      <y>620</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -125,6 +144,53 @@
     </property>
     <property name="text">
      <string>重置</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>320</y>
+      <width>321</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>请点击格子输入题目
+点击“开始”显示结果
+点击“重置”清空格子</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="stateLabel">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>450</y>
+      <width>321</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

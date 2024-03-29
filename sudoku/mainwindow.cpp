@@ -5,6 +5,7 @@
 #include <QDialog>
 #include <QDebug>
 #include <QFont>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,12 +20,15 @@ MainWindow::MainWindow(QWidget *parent)
         btnArray[i]->resize(100, 100);
         btnArray[i]->move(i % 9 * 100, i / 9 * 100);
         btnArray[i]->setFlat(true);
-        btnArray[i]->setStyleSheet(tr("QPushButton {\n	font: 25pt 'Microsoft YaHei UI';\n}"));
+        btnArray[i]->setStyleSheet(tr("QPushButton {\n	font: 25pt 'Microsoft YaHei UI';\n}\n"
+                                      "QPushButton::disabled{color:black}"));
         //使用了 QSignalMapper 来对多个部件进行操控
         connect(btnArray[i], SIGNAL(clicked(bool)), bArrMapper, SLOT(map()));
         bArrMapper->setMapping(btnArray[i], i);
     }
     connect(bArrMapper, SIGNAL(mappedInt(int)), this, SLOT(clicked_PushButton(int)));
+
+    ui->stateLabel->setText(tr("请点击格子输入数独题目"));
 }
 
 MainWindow::~MainWindow()
@@ -148,26 +152,44 @@ void MainWindow::clicked_PushButton(int i)
 void MainWindow::on_startBtn_clicked()
 {
     int temp[81];
-    for(int i = 0; i < 81; i++){
+    int i;
+    for(i = 0; i < 81; i++){
         temp[i] = !sudoku[i];
     }
 
-    bool mark = solve_sudoku(sudoku, 0, temp);
+    bool mark;
+
+    for(i = 0; i < 81; i++){
+        if(!temp[i]){
+            if(!check_sudoku(sudoku, i)){
+                mark = false;
+                break;
+            }
+        }
+        mark = true;
+    }
+    if(mark) mark = solve_sudoku(sudoku, 0, temp);
 
     //接下来写成功得到结果时的输出，和失败后的警告窗口
 
     if(mark){
         QString ans;
         for(int i = 0; i < 81; i++){
+            btnArray[i]->setEnabled(false);
             if(temp[i]){
                 ans = QString::number(sudoku[i]);
-                btnArray[i]->setStyleSheet(tr("QPushButton {\n	font: 25pt 'Microsoft YaHei UI';\n color:blue}"));
+                btnArray[i]->setStyleSheet(tr("QPushButton {\n	font: 25pt 'Microsoft YaHei UI';\n color:rgb(255, 70, 100)}\n"));
                 btnArray[i]->setText(ans);
             }
         }
-        sudokuDebug();
+        ui->stateLabel->setText(tr("输出结果成功\n\n请点击“重置”按钮清空界面"));
     }
-    else qDebug()<<"失败了";
+    else {
+        ui->stateLabel->setText(tr("输出结果失败\n\n请点击“重置按钮清空界面"));
+        int m = QMessageBox::warning(this, tr("警告"), tr("该数独无法解出答案"), QMessageBox::Ok);
+
+        qDebug()<<m;
+    }
 }
 
 
@@ -177,8 +199,11 @@ void MainWindow::on_resetBtn_clicked()
 {
     for(int i = 0; i < 81; i++){
         btnArray[i]->setText(tr(""));
-        btnArray[i]->setStyleSheet(tr("QPushButton {\n	font: 25pt 'Microsoft YaHei UI';\n}"));
+        btnArray[i]->setStyleSheet(tr("QPushButton {\n	font: 25pt 'Microsoft YaHei UI';\n}\n"
+                                      "QPushButton::disabled{color:black}"));
         sudoku[i] = 0;
+        btnArray[i]->setEnabled(true);
     }
+    ui->stateLabel->setText(tr("请点击格子输入数独题目"));
 }
 
