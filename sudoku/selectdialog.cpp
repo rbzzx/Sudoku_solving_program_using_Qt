@@ -71,3 +71,9 @@ void selectDialog::on_pushButton_9_clicked()
     num = 9;
 }
 
+
+void selectDialog::on_resetBtn_clicked()
+{
+    num = 0;
+}
+

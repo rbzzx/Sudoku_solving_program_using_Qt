@@ -31,6 +31,8 @@ public:
     QPushButton *pushButton_9;
     QLabel *label;
     QLabel *label_2;
+    QPushButton *resetBtn;
+    QLabel *label_3;
 
     void setupUi(QDialog *selectDialog)
     {
@@ -92,7 +94,7 @@ public:
         pushButton_9->setFlat(true);
         label = new QLabel(selectDialog);
         label->setObjectName("label");
-        label->setGeometry(QRect(179, 0, 105, 181));
+        label->setGeometry(QRect(179, 0, 105, 141));
         label->setAutoFillBackground(true);
         label->setFrameShape(QFrame::NoFrame);
         label->setAlignment(Qt::AlignCenter);
@@ -101,6 +103,19 @@ public:
         label_2->setGeometry(QRect(0, 0, 540, 540));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/sudoku_map.png")));
         label_2->setScaledContents(true);
+        resetBtn = new QPushButton(selectDialog);
+        resetBtn->setObjectName("resetBtn");
+        resetBtn->setGeometry(QRect(192, 120, 80, 31));
+        resetBtn->setAutoFillBackground(false);
+        resetBtn->setStyleSheet(QString::fromUtf8("QPushButton#resetBtn{\n"
+"	font-size:9pt;\n"
+"}"));
+        label_3 = new QLabel(selectDialog);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(179, 140, 105, 41));
+        label_3->setAutoFillBackground(true);
+        label_3->setFrameShape(QFrame::NoFrame);
+        label_3->setFrameShadow(QFrame::Plain);
         label_2->raise();
         pushButton->raise();
         pushButton_2->raise();
@@ -112,6 +127,8 @@ public:
         pushButton_8->raise();
         pushButton_9->raise();
         label->raise();
+        label_3->raise();
+        resetBtn->raise();
 
         retranslateUi(selectDialog);
         QObject::connect(pushButton, &QPushButton::clicked, selectDialog, qOverload<>(&QDialog::close));
@@ -123,6 +140,7 @@ public:
         QObject::connect(pushButton_7, &QPushButton::clicked, selectDialog, qOverload<>(&QDialog::close));
         QObject::connect(pushButton_8, &QPushButton::clicked, selectDialog, qOverload<>(&QDialog::close));
         QObject::connect(pushButton_9, &QPushButton::clicked, selectDialog, qOverload<>(&QDialog::close));
+        QObject::connect(resetBtn, &QPushButton::clicked, selectDialog, qOverload<>(&QDialog::close));
 
         pushButton->setDefault(true);
         pushButton_2->setDefault(true);
@@ -152,6 +170,8 @@ public:
         pushButton_9->setText(QCoreApplication::translate("selectDialog", "9", nullptr));
         label->setText(QCoreApplication::translate("selectDialog", "\351\200\211\346\213\251\344\270\200\344\270\252\346\225\260", nullptr));
         label_2->setText(QString());
+        resetBtn->setText(QCoreApplication::translate("selectDialog", "\346\270\205\351\231\244", nullptr));
+        label_3->setText(QString());
     } // retranslateUi
 
 };

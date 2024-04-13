@@ -151,7 +151,6 @@ void MainWindow::clicked_PushButton(int i)
 
 void MainWindow::on_startBtn_clicked()
 {
-    int temp[81];
     int i;
     for(i = 0; i < 81; i++){
         temp[i] = !sudoku[i];
@@ -203,6 +202,22 @@ void MainWindow::on_resetBtn_clicked()
                                       "QPushButton::disabled{color:black}"));
         sudoku[i] = 0;
         btnArray[i]->setEnabled(true);
+        temp[i] = 0;
+    }
+    ui->stateLabel->setText(tr("请点击格子输入数独题目"));
+}
+
+
+void MainWindow::on_returnBtn_clicked()
+{
+    for(int i = 0; i < 81; i++){
+        if(temp[i]){
+        btnArray[i]->setText(tr(""));
+        btnArray[i]->setStyleSheet(tr("QPushButton {\n	font: 25pt 'Microsoft YaHei UI';\n}\n"
+                                      "QPushButton::disabled{color:black}"));
+        sudoku[i] = 0;
+        btnArray[i]->setEnabled(true);
+        }
     }
     ui->stateLabel->setText(tr("请点击格子输入数独题目"));
 }

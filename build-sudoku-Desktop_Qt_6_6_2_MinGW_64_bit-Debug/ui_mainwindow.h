@@ -32,6 +32,7 @@ public:
     QPushButton *resetBtn;
     QLabel *Label;
     QLabel *stateLabel;
+    QPushButton *returnBtn;
     QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -63,7 +64,7 @@ public:
         sudoku_base->setTextInteractionFlags(Qt::NoTextInteraction);
         startBtn = new QPushButton(centralwidget);
         startBtn->setObjectName("startBtn");
-        startBtn->setGeometry(QRect(1060, 180, 121, 41));
+        startBtn->setGeometry(QRect(1060, 130, 121, 41));
         startBtn->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	/*background-color:rgb(255, 236, 233)\n"
 "}"));
@@ -80,10 +81,10 @@ public:
         line->setFrameShape(QFrame::VLine);
         resetBtn = new QPushButton(centralwidget);
         resetBtn->setObjectName("resetBtn");
-        resetBtn->setGeometry(QRect(1060, 240, 121, 41));
+        resetBtn->setGeometry(QRect(1060, 210, 121, 41));
         Label = new QLabel(centralwidget);
         Label->setObjectName("Label");
-        Label->setGeometry(QRect(960, 320, 321, 101));
+        Label->setGeometry(QRect(960, 380, 321, 81));
         QFont font;
         font.setPointSize(12);
         Label->setFont(font);
@@ -91,9 +92,12 @@ public:
         Label->setWordWrap(true);
         stateLabel = new QLabel(centralwidget);
         stateLabel->setObjectName("stateLabel");
-        stateLabel->setGeometry(QRect(960, 450, 321, 131));
+        stateLabel->setGeometry(QRect(960, 490, 321, 91));
         stateLabel->setFont(font);
         stateLabel->setAlignment(Qt::AlignCenter);
+        returnBtn = new QPushButton(centralwidget);
+        returnBtn->setObjectName("returnBtn");
+        returnBtn->setGeometry(QRect(1060, 290, 121, 41));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -115,11 +119,12 @@ public:
         sudoku_base->setText(QString());
         startBtn->setText(QCoreApplication::translate("MainWindow", "\345\274\200\345\247\213", nullptr));
         quitBtn->setText(QCoreApplication::translate("MainWindow", "\351\200\200\345\207\272", nullptr));
-        resetBtn->setText(QCoreApplication::translate("MainWindow", "\351\207\215\347\275\256", nullptr));
+        resetBtn->setText(QCoreApplication::translate("MainWindow", "\346\270\205\347\251\272", nullptr));
         Label->setText(QCoreApplication::translate("MainWindow", "\350\257\267\347\202\271\345\207\273\346\240\274\345\255\220\350\276\223\345\205\245\351\242\230\347\233\256\n"
 "\347\202\271\345\207\273\342\200\234\345\274\200\345\247\213\342\200\235\346\230\276\347\244\272\347\273\223\346\236\234\n"
 "\347\202\271\345\207\273\342\200\234\351\207\215\347\275\256\342\200\235\346\270\205\347\251\272\346\240\274\345\255\220", nullptr));
         stateLabel->setText(QString());
+        returnBtn->setText(QCoreApplication::translate("MainWindow", "\351\207\215\347\275\256", nullptr));
     } // retranslateUi
 
 };

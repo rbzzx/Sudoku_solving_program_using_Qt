@@ -78,7 +78,7 @@
     <property name="geometry">
      <rect>
       <x>1060</x>
-      <y>180</y>
+      <y>130</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -137,22 +137,22 @@
     <property name="geometry">
      <rect>
       <x>1060</x>
-      <y>240</y>
+      <y>210</y>
       <width>121</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>重置</string>
+     <string>清空</string>
     </property>
    </widget>
    <widget class="QLabel" name="Label">
     <property name="geometry">
      <rect>
       <x>960</x>
-      <y>320</y>
+      <y>380</y>
       <width>321</width>
-      <height>101</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
@@ -176,9 +176,9 @@
     <property name="geometry">
      <rect>
       <x>960</x>
-      <y>450</y>
+      <y>490</y>
       <width>321</width>
-      <height>131</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
@@ -191,6 +191,19 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="returnBtn">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>290</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>重置</string>
     </property>
    </widget>
   </widget>

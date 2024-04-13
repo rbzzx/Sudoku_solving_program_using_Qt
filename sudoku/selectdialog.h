@@ -36,6 +36,8 @@ private slots:
 
     void on_pushButton_9_clicked();
 
+    void on_resetBtn_clicked();
+
 private:
     Ui::selectDialog *ui;
 };

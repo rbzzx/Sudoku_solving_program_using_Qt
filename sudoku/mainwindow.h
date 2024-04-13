@@ -23,6 +23,7 @@ public:
     bool solve_sudoku(int* , int , int* );
 
     int sudoku[81] = {0};
+    int temp[81] = {0};
     QPushButton *btnArray[81];
     int indexArray = 0;
 
@@ -35,6 +36,8 @@ private slots:
     void on_startBtn_clicked();
 
     void on_resetBtn_clicked();
+
+    void on_returnBtn_clicked();
 
 private:
     Ui::MainWindow *ui;
